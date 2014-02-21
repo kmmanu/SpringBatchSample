@@ -7,12 +7,12 @@ import org.springframework.validation.BindException;
 
 public class EmployeeFieldSetMapper implements FieldSetMapper<Employee> {
 
-	public Employee mapFieldSet(final FieldSet fieldSet) throws BindException {
-		final Employee emp = new Employee();
-		emp.setId(fieldSet.readLong(0));
-		emp.setName(fieldSet.readString(1));
-		emp.setAge(fieldSet.readInt(2));
-		return emp;
-	}
+    public Employee mapFieldSet(final FieldSet fieldSet) throws BindException {
+        final Employee emp = new Employee();
+        emp.setId(fieldSet.readLong(0));
+        emp.setName(fieldSet.readString(1));
+        emp.setAge(fieldSet.readInt(2));
+        return emp;
+    }
 
 }

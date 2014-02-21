@@ -5,17 +5,14 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameter;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.beans.BeansException;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Manu
- * Date: 11/2/13
- * Time: 4:06 PM
- * To change this template use File | Settings | File Templates.
+ * @author : Manu
  */
 public class EmpDbToCsvBatch {
     public static void main(final String[] args) {
@@ -27,7 +24,6 @@ public class EmpDbToCsvBatch {
 
         final JobLauncher jobLauncher = context.getBean("jobLauncher",
                 JobLauncher.class);
-
         final Job empJob = context.getBean("importEmployeeToCsvJob", Job.class);
 
         final Map<String, JobParameter> jobParamMap = new HashMap<String, JobParameter>();
@@ -42,6 +38,7 @@ public class EmpDbToCsvBatch {
         } catch (final Exception e) {
             e.printStackTrace();
         }
+
 
         System.out.println("Done");
 

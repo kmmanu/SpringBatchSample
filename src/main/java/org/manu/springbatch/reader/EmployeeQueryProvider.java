@@ -21,6 +21,7 @@ public class EmployeeQueryProvider extends AbstractJpaQueryProvider {
 
     @Override
     public Query createQuery() {
+
         TypedQuery<Employee> query = getEntityManager().createQuery("select e from Employee e", Employee.class);
         return query;
     }

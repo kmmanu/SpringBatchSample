@@ -9,6 +9,9 @@
 
     <bean id="report" class="org.manu.springbatch.model.Employee"
           scope="prototype"/>
+    <bean id="stepListner" class="org.manu.springbatch.reader.StepListner">
+
+    </bean>
     <!-- <bean id="itemProcessor" class="org.manu.springbatch.processor.CustomItemProcessor"
         /> -->
 
@@ -16,10 +19,13 @@
         <batch:step id="importEmployeeStep">
             <batch:tasklet>
                 <batch:chunk reader="cvsFileItemReader" writer="xmlItemWriter"
-                             commit-interval="10">
-                    <!-- processor="itemProcessor" -->
-                </batch:chunk>
+                             commit-interval="10"/>
+                <!-- processor="itemProcessor" -->
             </batch:tasklet>
+            <batch:listeners>
+                <!--<batch:listener ref="stepListner"/>-->
+                <batch:listener ref="stepListner" before-step-method="init"/>
+            </batch:listeners>
         </batch:step>
     </batch:job>
 
